@@ -1,18 +1,13 @@
-from flask import Flask
-from flask import url_for, request, render_template
 import os
+
+from flask import Flask
 
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET'])
-def form_sample():
-    url_style = url_for('static', filename='css/style.css')
-    url_images = [url_for('static', filename='img/1.jpg'), url_for('static', filename='img/2.jpg'),
-                  url_for('static', filename='img/3.jpg'), url_for('static', filename='img/4.jpg')]
-
-    if request.method == 'GET':
-        return render_template('distribution.html', url_style=url_style, url_images=url_images)
+@app.route("/")
+def index():
+    return "Привет от приложения Flask"
 
 
 if __name__ == '__main__':
