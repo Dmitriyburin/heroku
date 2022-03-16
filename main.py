@@ -37,8 +37,9 @@ def main():
 
 def handle_dialog(req, res):
     user_id = req['session']['user_id']
+    is_second_round = False
 
-    if req['session']['new']:
+    if req['session']['new'] and is_second_round:
         sessionStorage[user_id] = {
             'suggests': [
                 "Не хочу.",
@@ -59,7 +60,7 @@ def handle_dialog(req, res):
         'хорошо'
     ]]:
         res['response']['text'] = 'Лучше купи кролика!'
-        req['session']['new'] = True
+        is_second_round = True
         return
 
     res['response']['text'] =\
