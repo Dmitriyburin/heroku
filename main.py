@@ -87,8 +87,8 @@ def get_suggests(user_id):
     return suggests
 
 
-@app.route('/yandex_0b5b6679f42b4691.html', methods=['POST'])
-def main():
+@app.route('/yandex_0b5b6679f42b4691.html', methods=['GET', 'POST'])
+def conf():
     return render_template('yandex_0b5b6679f42b4691.html')
 
 
