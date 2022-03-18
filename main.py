@@ -1,5 +1,5 @@
 # импортируем библиотеки
-from flask import Flask, request
+from flask import Flask, request, render_template
 import logging
 
 # библиотека, которая нам понадобится для работы с JSON
@@ -38,7 +38,7 @@ def main():
 def handle_dialog(req, res):
     user_id = req['session']['user_id']
 
-    if req['session']['new'] and is_second_round:
+    if req['session']['new']:
         sessionStorage[user_id] = {
             'suggests': [
                 "Не хочу.",
@@ -85,6 +85,11 @@ def get_suggests(user_id):
         })
 
     return suggests
+
+
+@app.route('/yandex_0b5b6679f42b4691.html', methods=['POST'])
+def main():
+    return render_template('yandex_0b5b6679f42b4691.html')
 
 
 if __name__ == '__main__':
